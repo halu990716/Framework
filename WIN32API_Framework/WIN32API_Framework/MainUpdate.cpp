@@ -17,37 +17,52 @@ void MainUpdate::Start()
 
 	EndX = 200;
 	EndY = 200;
-}
+}	
 
 void MainUpdate::Update()
 {
 	if (GetAsyncKeyState(VK_UP))
 	{
-		StartY -= 1;
+		StartY --;
 
-		EndY -= 1;
+		EndY --;
 	}
 
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		StartY += 1;
+		StartY ++;
 
-		EndY += 1;
+		EndY ++;
 	}
 
 	if (GetAsyncKeyState(VK_LEFT))
 	{
-		StartX -= 1;
+		StartX --;
 
-		EndX -= 1;
+		EndX --;
+
 	}
 
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		StartX += 1;
+		StartX ++;
 
-		EndX += 1;
+		EndX ++;
 	}
+	
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		StartBulletX = StartX + 45;
+		StartBulletY = StartY + 45;
+
+		EndBulletX = StartX + 55;
+		EndBulletY = StartY + 55;
+	}
+
+	StartBulletX += 100;
+	EndBulletX += 100;
+
+	Rectangle(m_hdc, StartBulletX, StartBulletY, EndBulletX, EndBulletY);
 }
 
 void MainUpdate::Render()

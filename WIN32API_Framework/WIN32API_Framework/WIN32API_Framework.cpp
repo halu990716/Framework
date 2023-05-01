@@ -61,6 +61,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             Main.Update();
             Main.Render();
+
+            Sleep(1);
         }
     }
 
