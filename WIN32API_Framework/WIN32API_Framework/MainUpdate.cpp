@@ -1,78 +1,38 @@
 #include "MainUpdate.h"
+#include "Player.h"
+#include "Bullet.h"
 
-MainUpdate::MainUpdate()
+MainUpdate::MainUpdate() : m_pPlayer(NULL)
 {
 }
 
 MainUpdate::~MainUpdate()
 {
+	Destroy();
 }
 
 void MainUpdate::Start()
 {
 	m_hdc = GetDC(g_hWnd);
 
-	StartX = 100;
-	StartY = 100;
+	m_pPlayer = new Player();
+	m_pPlayer->Start();
 
-	EndX = 200;
-	EndY = 200;
+	m_pBullet = new Bullet();
+	m_pBullet->Start();
 }	
 
 void MainUpdate::Update()
 {
-	if (GetAsyncKeyState(VK_UP))
-	{
-		StartY --;
-
-		EndY --;
-	}
-
-	if (GetAsyncKeyState(VK_DOWN))
-	{
-		StartY ++;
-
-		EndY ++;
-	}
-
-	if (GetAsyncKeyState(VK_LEFT))
-	{
-		StartX --;
-
-		EndX --;
-
-	}
-
-	if (GetAsyncKeyState(VK_RIGHT))
-	{
-		StartX ++;
-
-		EndX ++;
-	}
-	
-	if (GetAsyncKeyState(VK_SPACE))
-	{
-		StartBulletX = StartX + 45;
-		StartBulletY = StartY + 45;
-
-		EndBulletX = StartX + 55;
-		EndBulletY = StartY + 55;
-	}
-
-	StartBulletX += 100;
-	EndBulletX += 100;
-
-	Rectangle(m_hdc, StartBulletX, StartBulletY, EndBulletX, EndBulletY);
+	m_pPlayer->Update();
+	m_pBullet->Update();
 }
 
 void MainUpdate::Render()
 {
-	/*
-	Rectangle(m_hdc,
-		0, 0,
-		1280, 720);
-		*/
-	Rectangle(m_hdc, StartX, StartY, EndX, EndY);
+	Rectangle(m_hdc, -1, -1, 1920, 1080);
+	m_pPlayer->Render(m_hdc);
+	m_pBullet->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()
