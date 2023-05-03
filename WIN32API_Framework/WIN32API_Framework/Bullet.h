@@ -1,15 +1,16 @@
 #pragma once
 #include "GameObject.h"
-
+//x
 class  Bullet : public GameObject
 {
 public:
-	void Start();
-	void Update();
-	void Render(HDC hdc);
-	void Destroy();
+	// override (virtual)이 아니더라도
+	virtual void Start()override;
+	virtual void Start(Vector3 _position)override;
+	virtual int Update()override;
+	virtual void Render(HDC hdc)override;
+	virtual void Destroy()override;
 public:
 	Bullet();
-	~Bullet();
-
+	virtual ~Bullet();
 };

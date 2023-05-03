@@ -3,7 +3,7 @@
 #include"Include.h"
 #include"GameObject.h"
 #include"player.h"
-#include"Bullet.h"
+#include"Enemy.h"
 
 class MainUpdate
 {
@@ -12,12 +12,7 @@ private:
 
 	RECT rcPoint;
 	Player* m_pPlayer;
-	Bullet* m_pBullet;
-
-	int StartX, StartY;
-	int EndX, EndY;
-	int StartBulletX, StartBulletY;
-	int EndBulletX, EndBulletY;
+	Enemy* m_pEnemy;
 public:
 	void Start();
 	void Update();

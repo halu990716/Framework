@@ -16,7 +16,7 @@ typedef struct tagVector3
 
 typedef struct tagTranform
 {
-	Vector3* position;
-	Vector3* rotation;
-	Vector3* scale;
+	Vector3 position;
+	Vector3 rotation;
+	Vector3 scale;
 }Tranform;
