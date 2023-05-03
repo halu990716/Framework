@@ -1,4 +1,6 @@
 #include "MainUpdate.h"
+#include "player.h"
+#include "Enemy.h"
 
 MainUpdate::MainUpdate() : m_pPlayer(NULL)
 {

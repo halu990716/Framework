@@ -11,11 +11,11 @@ protected:
 public:
 	// virtual = 0 (PURE) 순수 가상함수
 
-	virtual void Start()=0;
-	virtual void Start(Vector3 _position)=0;
-	virtual int Update()=0;
-	virtual void Render(HDC hdc)=0;
-	virtual void Destroy()=0;
+	virtual void Start()PURE;
+	virtual void Start(Vector3 _position)PURE;
+	virtual int Update()PURE;
+	virtual void Render(HDC hdc)PURE;
+	virtual void Destroy()PURE;
 public:
 	Tranform GetTransform() { return transform; }
 	//void SetTransform(Tranform _transform) { transform = _transform; }

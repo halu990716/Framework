@@ -1,18 +1,15 @@
 #pragma once
 
 #include"Include.h"
-#include"GameObject.h"
-#include"player.h"
-#include"Enemy.h"
 
+class GameObject;
 class MainUpdate
 {
 private:
 	HDC m_hdc;
 
-	RECT rcPoint;
-	Player* m_pPlayer;
-	Enemy* m_pEnemy;
+	GameObject* m_pPlayer;
+	GameObject* m_pEnemy;
 public:
 	void Start();
 	void Update();
