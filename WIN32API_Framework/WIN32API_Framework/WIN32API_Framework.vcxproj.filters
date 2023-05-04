@@ -43,9 +43,6 @@
     <Filter Include="소스 파일\99.Manager\CollisionManager">
       <UniqueIdentifier>{5fb317d0-7dfd-4641-9bb2-4fe3354c107a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\99.Manager\ScenManager">
-      <UniqueIdentifier>{ea60db30-35d2-4e0a-840a-0f746dba7af0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02. Scene%3b">
       <UniqueIdentifier>{3b07a82b-f3ee-40ba-8495-c99446ffd54b}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,9 @@
     </Filter>
     <Filter Include="소스 파일\02. Scene%3b\Stage">
       <UniqueIdentifier>{a72f96a7-ecee-4828-b847-e86e17505023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\SceneManager">
+      <UniqueIdentifier>{ea60db30-35d2-4e0a-840a-0f746dba7af0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,8 +102,8 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>소스 파일\99.Manager\CollisionManager</Filter>
     </ClInclude>
-    <ClInclude Include="ScenManager.h">
-      <Filter>소스 파일\99.Manager\ScenManager</Filter>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\99.Manager\SceneManager</Filter>
     </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>헤더 파일\Include</Filter>
@@ -143,8 +143,8 @@
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\99.Manager\ObjectManager</Filter>
     </ClCompile>
-    <ClCompile Include="ScenManager.cpp">
-      <Filter>소스 파일\99.Manager\ScenManager</Filter>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\99.Manager\SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>소스 파일\02. Scene%3b</Filter>

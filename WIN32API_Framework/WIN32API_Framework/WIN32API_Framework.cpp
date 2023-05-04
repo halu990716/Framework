@@ -70,8 +70,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    return (int) msg.wParam;
-}
 /*
 while (GetMessage(&msg, nullptr, 0, 0))
 {
@@ -82,6 +80,9 @@ while (GetMessage(&msg, nullptr, 0, 0))
     }
 }
 */
+
+    return (int) msg.wParam;
+}
 //
 //  함수: MyRegisterClass()
 //

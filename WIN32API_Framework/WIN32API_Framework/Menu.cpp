@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "ScenManager.h"
+#include "SceneManager.h"
 
 Menu::Menu()
 {
@@ -17,7 +17,7 @@ int Menu::Update()
 {
 	if (GetAsyncKeyState('S'))
 	{
-		SceneManager::
+		SceneManager::GetInstance()->SetScene(STAGE);
 	}
 
 	return 0;
@@ -25,7 +25,7 @@ int Menu::Update()
 
 void Menu::Render(HDC hdc)
 {
-	Ellipse(hdc, 500, 500, 600, 600)
+	Ellipse(hdc, 500, 500, 600, 600);
 }
 
 void Menu::Destroy()

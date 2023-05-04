@@ -7,7 +7,7 @@ class CollisionManager
 public:
 	
 	// ** 구(동그라미) 충돌
-	static bool Collision(GameObject* temp, GameObject* dest)
+	static bool CircleCollision(GameObject* temp, GameObject* dest)
 	{
 		// ** x값과 y 값을 구한다.
 		float fx = dest->GetPosition().x - temp->GetPosition().x;

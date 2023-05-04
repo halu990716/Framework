@@ -1,23 +1,23 @@
-#include "ScenManager.h"
+#include "SceneManager.h"
 
 #include "Logo.h"
 #include "Menu.h"
 #include "Stage.h"
 
-ScenManager* ScenManager::Instance = nullptr;
+SceneManager* SceneManager::Instance = nullptr;
 
 
-ScenManager::ScenManager() : SceneState(nullptr)
+SceneManager::SceneManager() : SceneState(nullptr)
 {
 
 }
 
-ScenManager::~ScenManager()
+SceneManager::~SceneManager()
 {
 
 }
 
-void ScenManager::SetScene(SCENEID _State)
+void SceneManager::SetScene(SCENEID _State)
 {
 	if (SceneState != nullptr)
 	{
@@ -47,12 +47,13 @@ void SceneManager::Update()
 	SceneState->Update();
 }
 
-void SceneManager::Update()
+void SceneManager::Render(HDC hdc)
 {
-	SceneState->Update();
+	SceneState->Render(hdc);
 }
 
-void SceneManager::Update()
+void SceneManager::Destroy()
 {
-	SceneState->Update();
+	delete SceneState;
+	SceneState = nullptr;
 }

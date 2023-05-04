@@ -8,7 +8,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::Start()
+GameObject* Enemy::Start()
 {
 	srand((unsigned int)GetTickCount64());
 	transform.position = Vector3(WIDTH + 75.0f, float(rand()%(HEIGHT -150) +75), 0.0f);
@@ -19,6 +19,7 @@ void Enemy::Start()
 
 	Key = "Enemy";
 
+	return this;
 }
 
 
