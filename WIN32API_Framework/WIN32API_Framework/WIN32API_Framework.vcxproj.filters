@@ -43,20 +43,20 @@
     <Filter Include="소스 파일\99.Manager\CollisionManager">
       <UniqueIdentifier>{5fb317d0-7dfd-4641-9bb2-4fe3354c107a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene%3b">
-      <UniqueIdentifier>{3b07a82b-f3ee-40ba-8495-c99446ffd54b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene%3b\Logo">
-      <UniqueIdentifier>{6361a80d-6ef0-41c2-b244-437cfc379e50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene%3b\Menu">
-      <UniqueIdentifier>{c205e991-8b3f-4b9f-8f1e-a3b6d346ae9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene%3b\Stage">
-      <UniqueIdentifier>{a72f96a7-ecee-4828-b847-e86e17505023}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\99.Manager\SceneManager">
       <UniqueIdentifier>{ea60db30-35d2-4e0a-840a-0f746dba7af0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{3b07a82b-f3ee-40ba-8495-c99446ffd54b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Logo">
+      <UniqueIdentifier>{6361a80d-6ef0-41c2-b244-437cfc379e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Menu">
+      <UniqueIdentifier>{c205e991-8b3f-4b9f-8f1e-a3b6d346ae9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Stage">
+      <UniqueIdentifier>{a72f96a7-ecee-4828-b847-e86e17505023}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -109,16 +109,16 @@
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>소스 파일\02. Scene%3b</Filter>
+      <Filter>소스 파일\02. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Logo.h">
-      <Filter>소스 파일\02. Scene%3b\Logo</Filter>
+      <Filter>소스 파일\02. Scene\Logo</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>소스 파일\02. Scene%3b\Menu</Filter>
+      <Filter>소스 파일\02. Scene\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>소스 파일\02. Scene%3b\Stage</Filter>
+      <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -147,16 +147,16 @@
       <Filter>소스 파일\99.Manager\SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>소스 파일\02. Scene%3b</Filter>
+      <Filter>소스 파일\02. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Logo.cpp">
-      <Filter>소스 파일\02. Scene%3b\Logo</Filter>
+      <Filter>소스 파일\02. Scene\Logo</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>소스 파일\02. Scene%3b\Menu</Filter>
+      <Filter>소스 파일\02. Scene\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>소스 파일\02. Scene%3b\Stage</Filter>
+      <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

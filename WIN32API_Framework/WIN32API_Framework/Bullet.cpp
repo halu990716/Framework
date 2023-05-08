@@ -11,7 +11,7 @@ Bullet::~Bullet()
 GameObject* Bullet::Start()
 {
 	transform.position = Vector3(0.0f, 0.0f, 0.0f);
-	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
+	transform.direction = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(30.0f, 30.0f, 0.0f);
 
 	float distance = sqrt((transform.position.x * transform.position.x) +
@@ -27,7 +27,7 @@ GameObject* Bullet::Start()
 void Bullet::Start(Vector3 _position)
 {
 	transform.position = _position;
-	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
+	transform.direction = Vector3(1.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(30.0f, 30.0f, 0.0f);
 
 	Speed = 15;
@@ -37,7 +37,7 @@ void Bullet::Start(Vector3 _position)
 
 int Bullet::Update()
 {
-	transform.position.x += Speed;
+	transform.position += transform.direction * Speed;
 
 	if (transform.position.x > WIDTH)
 	{
