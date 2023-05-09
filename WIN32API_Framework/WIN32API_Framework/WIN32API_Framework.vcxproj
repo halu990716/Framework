@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -146,6 +146,7 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="GameObject.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="GameObject.cpp" />
