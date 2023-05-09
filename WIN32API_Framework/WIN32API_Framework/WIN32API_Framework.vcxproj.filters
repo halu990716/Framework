@@ -22,18 +22,6 @@
     <Filter Include="소스 파일\00. MainUpdate">
       <UniqueIdentifier>{a20a570b-0b99-4ab3-abc3-fdf073b86bf9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object">
-      <UniqueIdentifier>{1d4cc1e1-875f-40e5-8e5c-8157d7168fe1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Object\Player">
-      <UniqueIdentifier>{8d408040-64d0-46a5-8e66-36a07fdef56b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Object\Bullet">
-      <UniqueIdentifier>{85e93bcf-5a5c-48ff-a46f-562b5e4566ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Object\Enemy">
-      <UniqueIdentifier>{598c5cdc-2988-4408-b68e-49f53d971040}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\99.Manager">
       <UniqueIdentifier>{905c9993-004c-442c-8ff5-0b75be55bd19}</UniqueIdentifier>
     </Filter>
@@ -61,6 +49,18 @@
     <Filter Include="소스 파일\99.Manager\InputManager">
       <UniqueIdentifier>{97ff1a14-e746-4cc9-834c-587501359099}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. GameObject">
+      <UniqueIdentifier>{1d4cc1e1-875f-40e5-8e5c-8157d7168fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Player">
+      <UniqueIdentifier>{8d408040-64d0-46a5-8e66-36a07fdef56b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet">
+      <UniqueIdentifier>{85e93bcf-5a5c-48ff-a46f-562b5e4566ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Enemy">
+      <UniqueIdentifier>{598c5cdc-2988-4408-b68e-49f53d971040}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -85,19 +85,19 @@
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>소스 파일\01. Object</Filter>
+      <Filter>소스 파일\01. GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Structs.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>소스 파일\01. Object\Player</Filter>
+      <Filter>소스 파일\01. GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>소스 파일\01. Object\Bullet</Filter>
+      <Filter>소스 파일\01. GameObject\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>소스 파일\01. Object\Enemy</Filter>
+      <Filter>소스 파일\01. GameObject\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>소스 파일\99.Manager\ObjectManager</Filter>
@@ -135,16 +135,16 @@
       <Filter>소스 파일\00. MainUpdate</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>소스 파일\01. Object</Filter>
+      <Filter>소스 파일\01. GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\01. Object\Player</Filter>
+      <Filter>소스 파일\01. GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>소스 파일\01. Object\Bullet</Filter>
+      <Filter>소스 파일\01. GameObject\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>소스 파일\01. Object\Enemy</Filter>
+      <Filter>소스 파일\01. GameObject\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\99.Manager\ObjectManager</Filter>

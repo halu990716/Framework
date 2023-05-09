@@ -2,7 +2,6 @@
 
 #include"Include.h"
 
-class GameObject;
 class MainUpdate
 {
 private:
