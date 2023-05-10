@@ -6,8 +6,6 @@
 
 //SceneManager* SceneManager::Instance = nullptr;
 
-GetSingle(SceneManager)* GetSingle(SceneManager)::Instance = nullptr;
-
 SceneManager::SceneManager() : SceneState(nullptr)
 {
 

@@ -18,9 +18,9 @@ void Stage::Start()
 	m_pPlayer = new Player();
 	m_pPlayer->Start();
 
-	ObjectManager::GetInstance()->AddObject((new Enemy)->Start());
+	GetSingle(ObjectManager)->AddObject((new Enemy)->Start());
 
-	EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
+	EnemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
 	//BulletList = nullptr;
 }
 
@@ -45,7 +45,7 @@ int Stage::Update()
 		};
 	}
 	else
-		BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
+		BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
 
 	return 0;
 }

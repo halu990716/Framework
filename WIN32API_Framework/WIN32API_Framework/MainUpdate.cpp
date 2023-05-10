@@ -15,20 +15,20 @@ void MainUpdate::Start()
 {
 	m_hdc = GetDC(g_hWnd);
 
-	SceneManager::GetInstance()->SetScene(LOGO);
+	GetSingle(SceneManager)->SetScene(LOGO);
 }	
 
 void MainUpdate::Update()
 {	
-	InputManager::GetInstance()->CheckKey();
+	GetSingle(InputManager)->CheckKey();
 
-	SceneManager::GetInstance()->Update();
+	GetSingle(SceneManager)->Update();
 }
 
 void MainUpdate::Render()
 {
 	Rectangle(m_hdc, -1, -1, WIDTH, HEIGHT);
-	SceneManager::GetInstance()->Render(m_hdc);
+	GetSingle(SceneManager)->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()

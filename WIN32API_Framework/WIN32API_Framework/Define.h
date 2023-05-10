@@ -16,15 +16,19 @@ const unsigned char KEYID_SPACE = 0x00000020;
 const unsigned char KEYID_ESCAPE = 0x00000040;
 const unsigned char KEYID_CONTROL = 0x00000080;
 
-#define Single(T)											 \
-public:																 \
-	static T& GetInstance()					     \
-	{																	 \
-		static T Instance;								 \
-		return Instance;									 \
-	}																	 \
-	private:														 \
-		T(const T&) = delete;							 \
+
+
+#define Single(T)											\
+public:																\
+	static T** GetInstance()					    \
+	{																	\
+		static T* Instance;								\
+		if(Instance == nullptr)							\
+			Instance = new T;							\
+		return &Instance;								\
+	}																	\
+	private:														\
+		T(const T&) = delete;							\
 		T& operator = (const T&) = delete;
 
-#define GetSingle(T) (T::GetInstance())
+#define GetSingle(T) (*T::GetInstance())
