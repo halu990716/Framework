@@ -127,11 +127,104 @@ public:
 	}
 };
 
+typedef struct tagNode
+{
+	tagNode* next;
+	int value;
+}NODE;
+
+// ** List(효율적인 추가삭제가 가능)
+NODE* List = new NODE;
+int Length;
+
+void Push(int value);
+
+void insert(int count, int value)
+{
+	// ** 리스트에 담긴 총 원소의 개수보다 count의 값이 크다면
+	// ** 값을 추가할 수 없으므로 종료.
+	if (Length < count)
+		return;
+
+	// ** 리스트를 들고옴.
+	NODE* nextNode = List;
+
+	// ** 카운트의 값만큼 다음 노드로 이동.
+	while (0 < count)
+	{
+		--count;
+
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+
+	}
+	// ** 이동이 끝났다면 새로운 노드를 추가.
+
+	// ** 새로운 노드 생성
+	NODE* newNode = new NODE;
+	newNode->next = nullptr;
+	newNode->value = value;
+
+	// ** 다음 노드를 임시의 저장소에 저장.
+	NODE* tempNode = nextNode->next;
+
+	// ** 다음노드를 저장하는 저장소에 새로운 노드를 배치.
+	nextNode->next = newNode;
+
+	// ** 새로운 노드가 가르키는 다음노드를 임시공간에 있던 노드로 배치
+	newNode->next = tempNode;
+}
+
 int main(void)
 {
-	GetSingle(Singleton).SetValue(10);
+	// ** 첫번째 노드
+	// create
+	List = new NODE;
 
-	cout << GetSingle(Singleton).GetValue() << endl;
+	//initialize
+	List->next = nullptr;
+	List->value = 0.0f;
+
+	//==============================
+	// ** 두번째 노드
+	Push(10);
+	Push(20);
+	Push(30);
+	Push(40);
+	Push(50);
+	
+	insert(1, 25);
+
+
+	//==============================
+
+
+	//==============================
+
+
+	// ** 두번째 노드를 nextNode에 넘겨준다.
+	NODE* nextNode = List->next;
+
+	// ** nextNode가 nullptr이 아니라면 반복.
+	while (nextNode != nullptr)
+	{
+		// ** 출력
+		cout << nextNode->value << endl;
+
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+	}
+
+
+
+
+
+
+
+
+	/*GetSingle(Singleton).SetValue(10);
+
+	cout << GetSingle(Singleton).GetValue() << endl;*/
 	/*
 	function(10);
 	Object* player = new Player;
@@ -157,4 +250,24 @@ int main(void)
 	*/
 
 	return 0;
+}
+
+void Push(int value)
+{
+	// ** 리스트를 가져옴
+	NODE* nextNode = List;
+
+	// ** 
+	while (nextNode->next != nullptr)
+	{
+
+		nextNode = nextNode->next;
+	}
+
+	nextNode->next = new NODE;
+
+	nextNode->next->value = value;
+	nextNode->next->next = nullptr;
+
+	++Length;
 }
