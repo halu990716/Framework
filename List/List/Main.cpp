@@ -134,7 +134,8 @@ typedef struct tagNode
 }NODE;
 
 // ** List(효율적인 추가삭제가 가능)
-NODE* List = new NODE;
+NODE* List;
+NODE* End;
 int Length;
 
 void Push(int value);
@@ -175,6 +176,66 @@ void insert(int count, int value)
 	newNode->next = tempNode;
 }
 
+void remove(int count)
+{
+	if (Length < count)
+		return;
+
+	NODE* nextNode = List;
+
+
+	while (0 < count)
+	{
+		--count;
+
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+	}
+
+	// ** 다 다음 노드를 임시의 저장소에 저장.
+	NODE* tempNode = nextNode->next->next;
+
+	// ** 다음 노드를 삭제.
+	delete nextNode->next;
+	nextNode->next = nullptr;
+
+	// ** 삭제된 공간에 임시 저장했던 노드에 셋팅.
+	nextNode->next = tempNode;
+
+}
+
+void pop()
+{
+	NODE* nextNode = List;
+
+	if (!nextNode->next)
+	{
+		return;
+	}
+
+	while (nextNode->next->next != nullptr )
+	{
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+	}
+
+
+	//NODE* getNode = nextNode->next;
+
+	// ** 다음 노드를 삭제.
+	delete nextNode->next;
+	nextNode->next = nullptr;
+
+
+
+	// ** 삭제된 공간에 임시 저장했던 노드에 셋팅.
+	
+	//return getNode;
+
+	--Length;
+
+}
+
 int main(void)
 {
 	// ** 첫번째 노드
@@ -185,15 +246,18 @@ int main(void)
 	List->next = nullptr;
 	List->value = 0.0f;
 
+	End = List;
 	//==============================
 	// ** 두번째 노드
 	Push(10);
 	Push(20);
 	Push(30);
+	pop();
 	Push(40);
 	Push(50);
 	
 	insert(1, 25);
+	remove(2);
 
 
 	//==============================
@@ -255,19 +319,14 @@ int main(void)
 void Push(int value)
 {
 	// ** 리스트를 가져옴
-	NODE* nextNode = List;
 
-	// ** 
-	while (nextNode->next != nullptr)
-	{
+	NODE* node = new NODE;
 
-		nextNode = nextNode->next;
-	}
+	node->next = nullptr;
+	node->value = value;
 
-	nextNode->next = new NODE;
-
-	nextNode->next->value = value;
-	nextNode->next->next = nullptr;
+	End->next = node;
+	End = node;
 
 	++Length;
 }

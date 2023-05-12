@@ -17,7 +17,7 @@ GameObject* Bullet::Start()
 	float distance = sqrt((transform.position.x * transform.position.x) +
 		(transform.position.y * transform.position.y));
 
-	Speed = 15;
+	Speed = 15.0f;
 
 	Key = "Bullet";
 
