@@ -206,34 +206,31 @@ void remove(int count)
 
 void pop()
 {
-	NODE* nextNode = List;
-
-	if (!nextNode->next)
-	{
+	if (Length < 1)
 		return;
-	}
-
-	while (nextNode->next->next != nullptr )
+	else if (Length < 2)
 	{
-		// ** 다음노드로 이동
-		nextNode = nextNode->next;
+		delete List->next;
+		List->next = nullptr;
+		End = List;
 	}
+	else
+	{
+		NODE* nextNode = List;
 
+		while (nextNode->next->next != nullptr)
+		{
+			// ** 다음노드로 이동
+			nextNode = nextNode->next;
+		}
 
-	//NODE* getNode = nextNode->next;
+		End = nextNode;
+		delete nextNode->next;
+		nextNode->next = nullptr;
 
-	// ** 다음 노드를 삭제.
-	delete nextNode->next;
-	nextNode->next = nullptr;
+		--Length;
 
-
-
-	// ** 삭제된 공간에 임시 저장했던 노드에 셋팅.
-	
-	//return getNode;
-
-	--Length;
-
+	}
 }
 
 int main(void)
