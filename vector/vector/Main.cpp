@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -46,6 +47,14 @@ int main(void)
 		cout << Numbers[i] << endl;
 	}
 
+	vector<int> vecList;
+
+	for (int i = 0; i < 100; ++i)
+	{
+		vecList.push_back(i * 10 + 10);
+		cout << vecList[i] << endl;
+		cout << vecList.capacity() << endl << endl;
+	}
 
 	return 0;
 }
