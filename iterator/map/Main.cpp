@@ -61,24 +61,36 @@ int main(void)
 	Score score = Score(10, 20, 30);
 	score.name = "±æµ¿";
 
-	map<string, list<Score>>::iterator iter = StudentList.find(key);
 
 
-	StudentList[key, score.name].push_back(score);
+	//StudentList[key, score.name].push_back(score);
 
-	if (iter == StudentList.end())
+	for (int i = 0; i <= 1; ++i)
 	{
-		list<Score> tempList;
+		map<string, list<Score>>::iterator iter = StudentList.find(key);
 
-		tempList.push_back(score);
+		if (iter == StudentList.end())
+		{
+			list<Score> tempList;
 
-		StudentList.insert(make_pair(key, tempList));
+			tempList.push_back(score);
+
+			StudentList.insert(make_pair(key, tempList));
+		}
+		else
+		{
+			iter->second.push_back(score);
+		}
 	}
-	else
+	for (int i = 0; i <= 1; ++i)
 	{
-		iter->second.push_back(score);
-	}
+		map<string, list<Score>>::iterator iter = StudentList.find(key);
 
+		if (iter == StudentList.end())
+			return 1;
+		else
+			cout << &iter->second << endl;
+	}
 	
 	return 0;
 }
