@@ -61,18 +61,22 @@ int main(void)
 	Score score = Score(10, 20, 30);
 	score.name = "±æµ¿";
 
+	map<string, list<Score>>::iterator iter = StudentList.find(key);
+
+
 	StudentList[key, score.name].push_back(score);
 
-	if (!StudentList.empty())
+	if (iter == StudentList.end())
 	{
-		for (map<string, list<Score*>>::iterator iter = StudentList->begin(); iter != StudentList->end(); ++iter)
-		{
+		list<Score> tempList;
 
-		}
+		tempList.push_back(score);
+
+		StudentList.insert(make_pair(key, tempList));
 	}
 	else
 	{
-		
+		iter->second.push_back(score);
 	}
 
 	
