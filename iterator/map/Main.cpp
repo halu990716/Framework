@@ -13,12 +13,29 @@ typedef struct Score
 	int Eng;
 	int Math;
 
-	Score() : Kor(0), Eng(0), Math(0) {}
+
+	// 생성자 
+	Score() : name(""),  Kor(0), Eng(0), Math(0) {}
+
+	// 복사 생성자
+	// 복사 생성자 사용시 생성자 필수
+	Score(string _name) : name(_name),  Kor(0), Eng(0), Math(0) {}
 
 	Score(int _kor,	int _eng,	int _math)
-		: Kor(_kor), Eng(_eng), Math(_math) {}
+		: name(""), Kor(_kor), Eng(_eng), Math(_math) {}
 
+	Score(string _name, int _kor, int _eng, int _math)
+		: name(_name), Kor(_kor), Eng(_eng), Math(_math) {}
 };
+
+map<string, list<Score>> StudentList;
+
+Score CreateScore(string _name, int _kor, int _eng, int _math);
+
+
+bool AddStudent(string _key, Score _score);
+
+
 
 
 int main(void)
@@ -55,42 +72,67 @@ int main(void)
 	}
 	*/
 
-	map<string, list<Score>> StudentList;
 
 	string key = "홍";
-	Score score = Score(10, 20, 30);
-	score.name = "길동";
+	string name = "길동";
 
+	Score score = CreateScore(name, 10, 20, 30);
 
-
-	//StudentList[key, score.name].push_back(score);
-
-	for (int i = 0; i <= 1; ++i)
+	if (!AddStudent(key, score))
 	{
-		map<string, list<Score>>::iterator iter = StudentList.find(key);
+		cout << "Log" << endl;
+	}
+	else
+		cout << StudentList[key].front().name << endl;
 
-		if (iter == StudentList.end())
+
+	for (map<string, list<Score>>::iterator iter = StudentList.begin();
+		iter != StudentList.end(); ++iter)
+	{
+		for (list<Score>::iterator iter2 = iter->second.begin();
+			iter2 != iter->second.end(); ++iter2)
 		{
-			list<Score> tempList;
-
-			tempList.push_back(score);
-
-			StudentList.insert(make_pair(key, tempList));
-		}
-		else
-		{
-			iter->second.push_back(score);
+			cout << iter2->name << endl;
+			cout << iter2->Kor << endl;
+			cout << iter2->Eng << endl;
+			cout << iter2->Math << endl << endl;
 		}
 	}
-	for (int i = 0; i <= 1; ++i)
+	/*
+	for (map<string, list<Score>>::iterator iter = StudentList.begin();
+		iter != StudentList.end();++iter)
 	{
-		map<string, list<Score>>::iterator iter = StudentList.find(key);
+		cout << key << GetStudent(key).front().name << endl;
+		cout << GetStudent(key).front().Kor << endl;
+		cout << GetStudent(key).front().Eng << endl;
+		cout << GetStudent(key).front().Math << endl;
 
-		if (iter == StudentList.end())
-			return 1;
-		else
-			cout << &iter->second << endl;
+		cout << GetStudent(key).size() ;
 	}
-	
+	*/
+
 	return 0;
+}
+
+Score CreateScore(string _name, int _kor, int _eng, int _math)
+{
+	return Score(_name, _kor, _eng, _math);
+}
+
+
+bool AddStudent(string _key, Score _score)
+{
+	map<string, list<Score>>::iterator iter = StudentList.find(_key);
+
+	if (iter == StudentList.end())
+	{
+		list<Score> tempList;
+		tempList.push_back(_score);
+		StudentList.insert(make_pair(_key, tempList));
+	}
+	else
+	{
+		iter->second.push_back(_score);
+	}
+	return true;
 }
