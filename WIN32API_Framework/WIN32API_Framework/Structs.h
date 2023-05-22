@@ -62,4 +62,4 @@ typedef struct tagTranform
 	Vector3 position;
 	Vector3 direction;
 	Vector3 scale;
-}Tranform;
+}Transform;
