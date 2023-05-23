@@ -3,6 +3,8 @@
 #include"ObjectManager.h"
 #include "InputManager.h"
 #include "Prototype.h"
+#include "ObjectPool.h"
+#include "ObjectFactory.h"
 
 Player::Player()
 {
@@ -73,12 +75,27 @@ GameObject* Player::CreateBullet()
 {
 	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
 
+	list<GameObject*>* BulletList = GetSingle(ObjectPool)->GetList();
+
 	if (ProtoObj != nullptr)
 	{
-		GameObject* Object = ProtoObj->Clone();
+
+		if (BulletList->begin() == BulletList->end())
+		{
+		/*GameObject* Object = ProtoObj->Clone();
 		Object->Start();
-		Object->SetPosition(transform.position);
-		return Object;
+		Object->SetPosition(transform.position);*/
+
+		return ObjectFactory<Bullet>::CreateObject(transform.position);
+		}
+		else
+		{
+			list<GameObject*>::iterator iter = BulletList->begin();
+			(*iter)->Start();
+			(*iter)->SetPosition(transform.position);
+
+			return (*iter);
+		}
 	}
 	else
 		return nullptr;

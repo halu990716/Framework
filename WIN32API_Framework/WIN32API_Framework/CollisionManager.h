@@ -13,7 +13,7 @@ public:
 		float fy = dest->GetPosition().y - temp->GetPosition().y;
 
 		// ** 각각의 구의 반지름의 합을 구함.
-		float sum = dest->GetScale().x + temp->GetScale().x;
+		float sum = dest->GetScale().x * 0.5f + temp->GetScale().x * 0.5f;
 
 		// ** 거리를 구함.
 		float distance = sqrt((fx * fx) + (fy * fy));

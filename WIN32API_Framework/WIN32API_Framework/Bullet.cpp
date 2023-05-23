@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "ObjectPool.h"
 
 Bullet::Bullet()
 {
@@ -6,6 +7,7 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
+	Destroy();
 }
 
 GameObject* Bullet::Start()
@@ -30,8 +32,10 @@ int Bullet::Update()
 
 	if (transform.position.x > WIDTH)
 	{
+		Destroy();
 		return 1;
 	}
+
 
 	return 0;
 }
@@ -47,6 +51,8 @@ void Bullet::Render(HDC hdc)
 
 void Bullet::Destroy()
 {
+	GetSingle(ObjectPool)->ReturnObject(this);
+	transform.scale = Vector3(0.0f, 0.0f, 0.0f);
 
 }
 

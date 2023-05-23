@@ -20,14 +20,14 @@ void Prototype::Start()
 	transform.scale = Vector3(0.0f, 0.0f, 0.0f);
 
 	// 리터널 상수 심볼릭 상수
-	string key = " Player";
+	string key = "Player";
 																															  //셋키는 위험한 함수
 	PrototypeObject.insert(make_pair(key, (new Player(transform))->Start()->SetKey(key)));
 
-	key = " Bullet";
+	key = "Bullet";
 	PrototypeObject.insert(make_pair(key, (new Bullet(transform))->Start()->SetKey(key)));
 
-	key = " Enemy";
+	key = "Enemy";
 	PrototypeObject.insert(make_pair(key, (new Enemy(transform))->Start()->SetKey(key)));
 }
 

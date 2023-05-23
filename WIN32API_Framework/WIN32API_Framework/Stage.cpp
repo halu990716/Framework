@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "ObjectManager.h"
 #include "Prototype.h"
+#include "CollisionManager.h"
 
 Stage::Stage() :m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
 {
@@ -62,10 +63,20 @@ int Stage::Update()
 		for (list<GameObject*>::iterator iter = BulletList->begin(); iter != BulletList->end(); ++iter)
 		{
 			(*iter)->Update();
+
+			if (EnemyList != nullptr && !EnemyList->empty())
+			{
+				if (CollisionManager::CircleCollision((*iter), (*EnemyList->begin())))
+				{
+					(*iter)->Destroy();
+				}
+			}
 		};
 	}
 	else
 		BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
+
+
 
 	return 0;
 }
