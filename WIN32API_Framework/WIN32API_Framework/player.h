@@ -13,6 +13,7 @@ public:
 	//인라인 = 헤더에 바로 정의                                  // 기본 복사생성자 (this)
 	virtual GameObject* Clone()override { return new Player(*this); }
 public:
+	template <typename T>
 	GameObject* CreateBullet();
 public:
 	Player();

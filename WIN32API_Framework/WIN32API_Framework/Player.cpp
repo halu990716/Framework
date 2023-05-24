@@ -6,6 +6,9 @@
 #include "ObjectPool.h"
 #include "ObjectFactory.h"
 
+#include "NormalBullet.h"
+#include "GuideBullet.h"
+
 Player::Player()
 {
 
@@ -47,9 +50,10 @@ int Player::Update()
 	}
 
 	if (dwKey & KEYID_SPACE)
-	{
-		GetSingle(ObjectManager)->AddObject(CreateBullet());
-	}
+		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>());
+
+	if (dwKey & KEYID_CONTROL)
+		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
 
 	return 0;
 }
@@ -71,21 +75,30 @@ void Player::Destroy()
 
 }
 
+template <typename T>
 GameObject* Player::CreateBullet()
 {
+	Bridge* pBridge = new T;
+	pBridge->Start();
+	((BulletBridge*)pBridge)->SetTarget(this);
+
 	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
 
-	list<GameObject*>* BulletList = GetSingle(ObjectPool)->GetList();
+	//list<GameObject*>* BulletList = GetSingle(ObjectPool)->GetList();
 
 	if (ProtoObj != nullptr)
 	{
+		GameObject* Object = ProtoObj->Clone();
+		Object->Start();
+		Object->SetPosition(transform.position);
 
+		pBridge->SetObject(Object);
+		Object->SetBridge(pBridge);
+
+		return Object;
+		/*
 		if (BulletList->begin() == BulletList->end())
 		{
-		/*GameObject* Object = ProtoObj->Clone();
-		Object->Start();
-		Object->SetPosition(transform.position);*/
-
 		return ObjectFactory<Bullet>::CreateObject(transform.position);
 		}
 		else
@@ -96,6 +109,7 @@ GameObject* Player::CreateBullet()
 
 			return (*iter);
 		}
+		*/
 	}
 	else
 		return nullptr;

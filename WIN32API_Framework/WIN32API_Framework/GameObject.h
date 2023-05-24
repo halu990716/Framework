@@ -1,8 +1,8 @@
 #pragma once
-
 #include"Include.h"
 
 // 순수가상 함수가 1개라도 있으면 추상클래스
+class Bridge;
 class GameObject
 {
 protected:
@@ -10,6 +10,7 @@ protected:
 	float Speed;
 
 	string Key;
+	Bridge* pBridge;
 public:
 	// virtual = 0 (PURE) 순수	 가상함수
 
@@ -30,9 +31,11 @@ public:
 
 	Vector3 GetScale() { return transform.scale; }
 	void SetScale(const Vector3& _scale) { transform.scale = _scale; }
+
+	void SetBridge(Bridge* _bridge) { pBridge = _bridge; }
 public:
 	GameObject();
-	GameObject(Transform _transform) : transform(_transform), Speed(0.0f) {}
+	GameObject(Transform _transform) : transform(_transform), Speed(0.0f), pBridge(nullptr) {}
 	virtual ~GameObject();
 };
 

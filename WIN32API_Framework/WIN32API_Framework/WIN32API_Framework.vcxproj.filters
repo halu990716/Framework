@@ -67,8 +67,20 @@
     <Filter Include="소스 파일\99.Manager\Factory">
       <UniqueIdentifier>{19c154e0-c598-41c0-9b27-6c29db1a4c11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\99.Manager\ObjectPool">
+    <Filter Include="소스 파일\98. Pattern\Bridge">
+      <UniqueIdentifier>{68c6d365-fcc0-445f-becb-83503c73507c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\98. Pattern\ObjectPool">
       <UniqueIdentifier>{2f19f8f6-5e61-417c-aea6-05103fe5b150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge">
+      <UniqueIdentifier>{31525ef3-9273-4885-a42d-33afbac0272b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet">
+      <UniqueIdentifier>{6be79578-b01a-4e56-8017-442b6fadf757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet">
+      <UniqueIdentifier>{5d5cfc91-3ba9-43ba-ae1c-057ee577333a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +154,19 @@
       <Filter>소스 파일\99.Manager\Factory</Filter>
     </ClInclude>
     <ClInclude Include="ObjectPool.h">
-      <Filter>소스 파일\99.Manager\ObjectPool</Filter>
+      <Filter>소스 파일\98. Pattern\ObjectPool</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\98. Pattern\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBridge.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBullet.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideBullet.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +213,13 @@
       <Filter>소스 파일\98. Pattern</Filter>
     </ClCompile>
     <ClCompile Include="ObjectPool.cpp">
-      <Filter>소스 파일\99.Manager\ObjectPool</Filter>
+      <Filter>소스 파일\98. Pattern\ObjectPool</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBullet.cpp">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideBullet.cpp">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
