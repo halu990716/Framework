@@ -21,7 +21,6 @@ void Prototype::Start()
 
 	// 리터널 상수 심볼릭 상수
 	string key = "Player";
-																															  //셋키는 위험한 함수
 	PrototypeObject.insert(make_pair(key, (new Player(transform))->Start()->SetKey(key)));
 
 	key = "GuideBullet";

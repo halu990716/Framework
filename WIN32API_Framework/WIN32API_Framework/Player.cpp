@@ -80,8 +80,6 @@ GameObject* Player::CreateBullet(string _Key)
 {
 	GameObject* Obj = GetSingle(ObjectPool)->GetGameObject(_Key);
 
-	GetSingle(ObjectPool)->GetList(_Key);
-
 	if (Obj == nullptr)
 	{
 		Bridge* pBridge = new T;

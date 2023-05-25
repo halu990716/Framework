@@ -29,7 +29,6 @@ int Bullet::Update()
 
 	if (transform.position.x > WIDTH)
 	{
-		Destroy();
 		return 1;
 	}
 
