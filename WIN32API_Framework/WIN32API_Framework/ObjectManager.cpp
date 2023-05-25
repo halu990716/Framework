@@ -1,5 +1,6 @@
 #include "ObjectManager.h"
 #include "GameObject.h"
+#include "CollisionManager.h"
 
 //ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -47,6 +48,36 @@ list<GameObject*>* ObjectManager::GetObjectList(string key)
 	else
 		// ** second = value = list<GameOBject*> ¸¦ ¹ÝÈ¯.
 		return &iter->second;
+}
+
+void ObjectManager::Update()
+{
+	list<GameObject*>* enemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
+
+	for (map<string, list<GameObject*>>::iterator iter = ObjectList.begin();
+		iter != ObjectList.end(); ++iter)
+	{
+		for (list<GameObject*>::iterator iter2 = iter->second.begin();
+			iter2 != iter->second.end();)
+		{
+			int result = (*iter2)->Update();
+
+			if (result == 1)
+			{
+				(*iter2)->Destroy();
+				iter2 = iter->second.erase(iter2);
+			}
+			else
+				++iter2;
+			/*for (list<GameObject*>::iterator iter3 = enemyList->begin(); iter3 != enemyList->end(); ++iter3)
+			{
+				if (CollisionManager::CircleCollision((*iter2), (*iter3)))
+				{
+					(*iter2)->Destroy();
+				}
+			}*/
+		}
+	}
 }
 
 void ObjectManager::Render(HDC _hdc)

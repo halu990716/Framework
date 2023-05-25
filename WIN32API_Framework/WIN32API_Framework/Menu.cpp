@@ -18,7 +18,7 @@ int Menu::Update()
 {
 	DWORD dwKey = GetSingle(InputManager)->GetKey();
 
-	if (dwKey & KEYID_CONTROL)
+	if (dwKey & KEYID_RETURN)
 	{
 		GetSingle(SceneManager)->SetScene(STAGE);
 	}

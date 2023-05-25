@@ -50,10 +50,10 @@ int Player::Update()
 	}
 
 	if (dwKey & KEYID_SPACE)
-		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>());
+		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
 
 	if (dwKey & KEYID_CONTROL)
-		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
+		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
 
 	return 0;
 }
@@ -76,41 +76,55 @@ void Player::Destroy()
 }
 
 template <typename T>
-GameObject* Player::CreateBullet()
+GameObject* Player::CreateBullet(string _Key)
 {
-	Bridge* pBridge = new T;
-	pBridge->Start();
-	((BulletBridge*)pBridge)->SetTarget(this);
+	GameObject* Obj = GetSingle(ObjectPool)->GetGameObject(_Key);
 
-	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
+	GetSingle(ObjectPool)->GetList(_Key);
 
-	//list<GameObject*>* BulletList = GetSingle(ObjectPool)->GetList();
-
-	if (ProtoObj != nullptr)
+	if (Obj == nullptr)
 	{
-		GameObject* Object = ProtoObj->Clone();
-		Object->Start();
-		Object->SetPosition(transform.position);
+		Bridge* pBridge = new T;
+		pBridge->Start();
+		((BulletBridge*)pBridge)->SetTarget(this);
 
-		pBridge->SetObject(Object);
-		Object->SetBridge(pBridge);
+		GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject(_Key);
 
-		return Object;
-		/*
-		if (BulletList->begin() == BulletList->end())
+		//list<GameObject*>* BulletList = GetSingle(ObjectPool)->GetList();
+
+		if (ProtoObj != nullptr)
 		{
-		return ObjectFactory<Bullet>::CreateObject(transform.position);
+			GameObject* Object = ProtoObj->Clone();
+			Object->Start();
+			Object->SetPosition(transform.position);
+			Object->SetKey(_Key);
+
+			pBridge->SetObject(Object);
+			Object->SetBridge(pBridge);
+
+			return Object;
+			/*
+			if (BulletList->begin() == BulletList->end())
+			{
+			return ObjectFactory<Bullet>::CreateObject(transform.position);
+			}
+			else
+			{
+				list<GameObject*>::iterator iter = BulletList->begin();
+				(*iter)->Start();
+				(*iter)->SetPosition(transform.position);
+
+				return (*iter);
+			}
+			*/
 		}
 		else
-		{
-			list<GameObject*>::iterator iter = BulletList->begin();
-			(*iter)->Start();
-			(*iter)->SetPosition(transform.position);
-
-			return (*iter);
-		}
-		*/
+			return nullptr;
 	}
-	else
-		return nullptr;
+
+	Obj->Start();
+	Obj->SetPosition(transform.position);
+	Obj->SetKey(_Key);
+
+	return Obj;
 }

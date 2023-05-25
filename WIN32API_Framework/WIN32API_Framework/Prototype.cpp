@@ -24,11 +24,15 @@ void Prototype::Start()
 																															  //셋키는 위험한 함수
 	PrototypeObject.insert(make_pair(key, (new Player(transform))->Start()->SetKey(key)));
 
-	key = "Bullet";
+	key = "GuideBullet";
+	PrototypeObject.insert(make_pair(key, (new Bullet(transform))->Start()->SetKey(key)));
+
+	key = "NormalBullet";
 	PrototypeObject.insert(make_pair(key, (new Bullet(transform))->Start()->SetKey(key)));
 
 	key = "Enemy";
 	PrototypeObject.insert(make_pair(key, (new Enemy(transform))->Start()->SetKey(key)));
+
 }
 
 GameObject* Prototype::GetGameObject(string _key)

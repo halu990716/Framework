@@ -37,5 +37,6 @@ public:
 	GameObject();
 	GameObject(Transform _transform) : transform(_transform), Speed(0.0f), pBridge(nullptr) {}
 	virtual ~GameObject();
+	//소멸자에 virtual을 대입해야지 소멸이됨
 };
 
