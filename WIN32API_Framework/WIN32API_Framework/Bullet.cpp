@@ -1,6 +1,8 @@
 #include "Bullet.h"
 #include "ObjectPool.h"
 #include "NormalBullet.h"
+#include "CollisionManager.h"
+#include "ObjectManager.h"
 
 Bullet::Bullet()
 {
@@ -24,13 +26,16 @@ GameObject* Bullet::Start()
 
 int Bullet::Update()
 {
+	list<GameObject*>* enemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
+
 	if (pBridge)
 		pBridge->Update(transform);
 
-	if (transform.position.x > WIDTH)
-	{
-		return 1;
-	}
+	for (list<GameObject*>::iterator iter = enemyList->begin(); iter != enemyList->end(); ++iter)
+		if (CollisionManager::CircleCollision(this, (*iter)) || transform.position.x > WIDTH)
+		{
+			return 1;
+		}
 
 
 	return 0;

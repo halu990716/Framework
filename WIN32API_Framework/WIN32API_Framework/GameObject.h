@@ -2,6 +2,7 @@
 #include"Include.h"
 
 // 순수가상 함수가 1개라도 있으면 추상클래스
+class Bitmap;
 class Bridge;
 class GameObject
 {
@@ -11,9 +12,12 @@ protected:
 
 	string Key;
 	Bridge* pBridge;
+
+	static map<string, Bitmap*>* m_ImageList;
+public:
+	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
 public:
 	// virtual = 0 (PURE) 순수	 가상함수
-
 	virtual GameObject* Start() PURE;
 	virtual int Update() PURE;
 	virtual void Render(HDC hdc) PURE;

@@ -71,10 +71,13 @@ void ObjectManager::Update()
 				++iter2;
 			/*for (list<GameObject*>::iterator iter3 = enemyList->begin(); iter3 != enemyList->end(); ++iter3)
 			{
-				if (CollisionManager::CircleCollision((*iter2), (*iter3)))
+				if (CollisionManager::CircleCollision((*iter2), (*iter3)) && (*iter2) != (*iter3))
 				{
 					(*iter2)->Destroy();
+					iter2 = iter->second.erase(iter2);
 				}
+				else
+					++iter2;
 			}*/
 		}
 	}
