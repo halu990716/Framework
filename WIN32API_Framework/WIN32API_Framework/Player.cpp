@@ -11,21 +11,6 @@
 #include "GuideBullet.h"
 #include "Bitmap.h"
 
-void Player::SetFrame(int _frame, int _locomotion, int _endFrame, float _frameTime)
-{
-}
-
-void Player::OnAttack()
-{
-}
-
-void Player::OnMove()
-{
-}
-
-void Player::OnJump()
-{
-}
 
 Player::Player()
 {
@@ -56,13 +41,11 @@ GameObject* Player::Start()
 
 	Speed = 5.0f;
 
-	Key = "Player";
+	Key = "PlayerR";
 
 	Time = GetTickCount64();
 	return this;
 }
-	ULONGLONG Cool = GetTickCount64();
-	float HP = 5;
 
 int Player::Update()
 {
@@ -96,70 +79,66 @@ int Player::Update()
 	{
 		flightTime += 0.1f;
 
-		transform.position.y += -sinf(90 * PI / )
+		transform.position.y += -sinf(90 * PI / 180) * JumpHeight + (flightTime * flightTime * 0.98f);
+
+		if (curentY < transform.position.y)
+			SetFrame(frame.CountX, 3, 3, 50);
+		else
+			SetFrame(frame.CountX, 2, 3, 50);
+
+		curentY = transform.position.y;
+
+		if (oldY < transform.position.y)
+		{
+			flightTime = 0.0f;
+			transform.position.y = oldY;
+			isJumping = false;
+		}
 	}
 
-	if (dwKey & KEYID_LEFT && 20 < transform.position.x && 0 < HP)
+ 	if (dwKey & KEYID_SPACE)
 	{
-		Key = "PlayerFlip";
-
-		transform.position.x -= Speed;
-
-		if (Cool < GetTickCount64() - 300)
-			frame.CountY = 1;
+		SetFrame(frame.CountX, 0, 7, 1500 / 7);
+		OnAttack();
 	}
 
+	if (dwKey & KEYID_CONTROL)
+		OnJump();
 
-	if (dwKey & KEYID_RIGHT && WIDTH - 30 > transform.position.x && 0 < HP)
+	if (!Attack)
 	{
-		Key = "Player";
+		if (dwKey & KEYID_UP)
+			transform.position.y -= Speed;
+
+		if (dwKey & KEYID_DOWN)
+			transform.position.y += Speed;
 
 
-		transform.position.x += Speed;
+		if (GetAsyncKeyState('1'))
+			Option = 0;
 
-		if (Cool < GetTickCount64() - 300)
-			frame.CountY = 1;
+		if (GetAsyncKeyState('2'))
+			Option = 1;
+
+
+		if (dwKey & KEYID_LEFT)
+			transform.direction.x = (-1.0f);
+		else if (dwKey & KEYID_RIGHT)
+			transform.direction.x = 1.0f;
+		else
+			transform.direction.x = 0.0f;
 	}
 
-	if (dwKey & KEYID_UP && 20 < transform.position.y && 0 < HP)
+	if (transform.direction.x)
 	{
-		transform.position.y -= Speed;
-
-		frame.EndFrame = 4;
-
-		if(Cool < GetTickCount64() - 300)
-			frame.CountY = 7;
+		SetFrame(frame.CountX, 2, 7, 500 / 7);
+		OnMove();
 	}
+	else if (!isJumping)
+		SetFrame(frame.CountX, 0, 7, 1500 / 7);
 
-	if (dwKey & KEYID_DOWN && HEIGHT - 100 > transform.position.y && 0 < HP)
+	if (dwKey & KEYID_RETURN)
 	{
-		transform.position.y += Speed;
-
-		frame.EndFrame = 4;
-
-		if (Cool < GetTickCount64() - 300)
-			frame.CountY = 7;
-	}
-
- 	if (dwKey & KEYID_SPACE && Cool < GetTickCount64() - 300 && 0 < HP)
-	{
-		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
-
- 		if (3 < frame.CountX)
-			frame.CountX = 0;
-
-		frame.CountY = 4;
-		frame.EndFrame = 4;
-
-	}
-
-  	if (dwKey & KEYID_CONTROL)
-		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
-
-	if (dwKey & KEYID_RETURN && Cool < GetTickCount64() - 1000 && 0 < HP)
-	{
-		Cool = GetTickCount64();
-
 		frame.CountX = 0;
 
 		frame.CountY = 3;
@@ -167,10 +146,8 @@ int Player::Update()
 	}
 
 	for (list<GameObject*>::iterator iter = enemyList->begin(); iter != enemyList->end(); ++iter)
-		if (CollisionManager::CircleCollision(this, (*iter)) && Cool < GetTickCount64() - 500 && 0 < HP)
+		if (CollisionManager::CircleCollision(this, (*iter)))
 		{
-			Cool = GetTickCount64();
-
 			if(20 < transform.position.x)
 				transform.position.x = transform.position.x - 10;
 
@@ -178,20 +155,7 @@ int Player::Update()
 
 			frame.CountY = 5;
 			frame.EndFrame = 2;
-
-			HP--;
 		}
-
-	if (HP <= 0 && Cool < GetTickCount64())
-	{
-		Cool = 0;
-
-		frame.CountX = 0;
-
-		frame.CountY = 6;
-		frame.EndFrame = 5;
-
-	}
 	return 0;
 }
 
@@ -275,4 +239,49 @@ GameObject* Player::CreateBullet(string _Key)
 	Obj->SetKey(_Key);
 
 	return Obj;
+}
+
+void Player::SetFrame(int _frame, int _locomotion, int _endFrame, float _frameTime)
+{
+	frame.CountX = _frame;
+	frame.CountY = _locomotion;
+	frame.EndFrame = _endFrame;
+	frame.FrameTime = _frameTime;
+}
+
+void Player::OnAttack()
+{
+	if (Attack)
+		return;
+
+	Attack = true;
+	SetFrame(0, 5, 4, 1500 / 4);
+
+	switch (Option)
+	{
+	case 0:
+		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
+		break;
+
+	case 1:
+		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
+		break;
+
+	}
+}
+
+void Player::OnMove()
+{
+	transform.position += transform.direction * Speed;
+	Key = transform.direction.x < 0 ? "PlayerL" : "PlayerR";
+}
+
+void Player::OnJump()
+{
+	if (isJumping)
+		return;
+
+	isJumping = true;
+	oldY = transform.position.y;
+	frame.CountX = 0;
 }

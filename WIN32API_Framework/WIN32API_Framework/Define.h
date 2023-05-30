@@ -4,6 +4,8 @@ extern HWND g_hWnd;
 
 const int COUNT = 128;
 
+#define PI 3.141592f
+
 #define WIDTH 740
 #define HEIGHT 986
 
