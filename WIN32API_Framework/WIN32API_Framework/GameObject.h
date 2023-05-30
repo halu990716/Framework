@@ -7,10 +7,14 @@ class Bridge;
 class GameObject
 {
 protected:
+	Frame frame;
+	ULONGLONG Time;
+
 	Transform transform;
 	float Speed;
 
 	string Key;
+
 	Bridge* pBridge;
 
 	static map<string, Bitmap*>* m_ImageList;
