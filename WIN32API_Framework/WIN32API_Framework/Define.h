@@ -19,7 +19,7 @@ const unsigned char KEYID_ESCAPE = 0x00000040;
 const unsigned char KEYID_CONTROL = 0x00000080;
 
 
-
+// C사용할때 꺼내서 사용하면 좋음
 #define Single(T)											\
 public:																\
 	static T** GetInstance()					    \
@@ -34,3 +34,15 @@ public:																\
 		T& operator = (const T&) = delete;
 
 #define GetSingle(T) (*T::GetInstance())
+
+
+// 인라인 함수
+template <typename T>
+inline void Safe_Release(T& _Object)
+{
+	if (_Object)
+	{
+		delete _Object;
+		_Object = nullptr;
+	}
+}

@@ -68,8 +68,8 @@ int Player::Update()
 				SetFrame(0, 0, 7, 150);
 			}
 
-			if (frame.EndFrame != 7)
-				frame.EndFrame = 7;
+			//if (frame.EndFrame != 7)
+			//	frame.EndFrame = 7;
 		}
 
 		//frame.CountX != 0 && dwKey  == 0 && dwKey != KEYID_SPACE
@@ -77,17 +77,25 @@ int Player::Update()
 
 	if (isJumping)
 	{
+		// 180 * 3.141592f / 180 라디안 구하는 공식
+		// 3.141592f * 180 / 3.141592f 각도 구하는 공식
+
+		// ** 누르는 힘
 		flightTime += 0.1f;
+		float result = (flightTime * flightTime * 0.98f);
 
-		transform.position.y += -sinf(90 * PI / 180) * JumpHeight + (flightTime * flightTime * 0.98f);
-
+		// ** 점프
+		transform.position.y += -sinf(90 * PI / 180) * JumpHeight + result;
+		
+		// ** 점프일 때 올라가는 중인지 떨어지는 중인지를 확인
 		if (curentY < transform.position.y)
-			SetFrame(frame.CountX, 3, 3, 50);
+			SetFrame(frame.CountX, 2, 7, 700);
 		else
-			SetFrame(frame.CountX, 2, 3, 50);
+			SetFrame(frame.CountX, 2, 7, 700);
 
 		curentY = transform.position.y;
 
+		// ** 최초의 점프 위치를 벗어나면 최초 위치로 셋팅.
 		if (oldY < transform.position.y)
 		{
 			flightTime = 0.0f;
@@ -98,7 +106,7 @@ int Player::Update()
 
  	if (dwKey & KEYID_SPACE)
 	{
-		SetFrame(frame.CountX, 0, 7, 1500 / 7);
+		SetFrame(frame.CountX, 0, 7, 1500);
 		OnAttack();
 	}
 
@@ -107,19 +115,18 @@ int Player::Update()
 
 	if (!Attack)
 	{
-		if (dwKey & KEYID_UP)
-			transform.position.y -= Speed;
-
-		if (dwKey & KEYID_DOWN)
-			transform.position.y += Speed;
-
-
 		if (GetAsyncKeyState('1'))
 			Option = 0;
 
 		if (GetAsyncKeyState('2'))
 			Option = 1;
+	}
 
+		if (dwKey & KEYID_UP)
+			transform.position.y -= Speed;
+
+		if (dwKey & KEYID_DOWN)
+			transform.position.y += Speed;
 
 		if (dwKey & KEYID_LEFT)
 			transform.direction.x = (-1.0f);
@@ -127,15 +134,14 @@ int Player::Update()
 			transform.direction.x = 1.0f;
 		else
 			transform.direction.x = 0.0f;
-	}
 
 	if (transform.direction.x)
 	{
-		SetFrame(frame.CountX, 2, 7, 500 / 7);
+		SetFrame(frame.CountX, 1, 7, 500);
 		OnMove();
 	}
 	else if (!isJumping)
-		SetFrame(frame.CountX, 0, 7, 1500 / 7);
+		SetFrame(frame.CountX, 0, 7, 1500);
 
 	if (dwKey & KEYID_RETURN)
 	{
@@ -246,7 +252,7 @@ void Player::SetFrame(int _frame, int _locomotion, int _endFrame, float _frameTi
 	frame.CountX = _frame;
 	frame.CountY = _locomotion;
 	frame.EndFrame = _endFrame;
-	frame.FrameTime = _frameTime;
+	frame.FrameTime = _frameTime / _endFrame;
 }
 
 void Player::OnAttack()
@@ -255,18 +261,17 @@ void Player::OnAttack()
 		return;
 
 	Attack = true;
-	SetFrame(0, 5, 4, 1500 / 4);
+	SetFrame(0, 4, 4, 1500);
 
 	switch (Option)
 	{
-	case 0:
-		GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
-		break;
+		case 0:
+			GetSingle(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
+			break;
 
-	case 1:
-		GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
-		break;
-
+		case 1:
+			GetSingle(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
+			break;
 	}
 }
 
