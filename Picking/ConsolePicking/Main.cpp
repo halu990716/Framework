@@ -14,8 +14,6 @@ using namespace std;
 // ** 타일 최대 개수
 const int MAX = COUNT_X * COUNT_Y;
 
-// ** 타일 크기
-const Vector3 scale(6, 3);
 
 //#define BLACK					0
 //#define DARKBLUE			1
@@ -76,6 +74,7 @@ typedef struct tagTile
 	Vector3 position[4];
 	string tile[4];
 	int option;
+	int index;
 	int value;
 	int color;
 	bool check;
@@ -93,7 +92,7 @@ typedef struct tagTile
 			break;
 		}
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 4; i++)
 			Text(position[i].x, position[i].y, tile[i], color);
 
 	}
@@ -112,6 +111,8 @@ typedef struct tagInfo
 
 }Info;
 
+// ** 타일 크기
+const Vector3 scale(6, 3);
 list<Tile*>BlackTileList;
 
 int main(void)
@@ -135,17 +136,10 @@ int main(void)
 		tile->tile[2] = "└─┘";
 		tile->position[2] = Vector3(x * scale.x, y * scale.y + 2);
 
-		//char* buffer = new char[4];
-
-		//_itoa(tile->value, buffer, 10);
-
-		//tile->position[3] = Vector3(x * scale.x + 2, y * scale.y +1);
-
-		//Text(position)
-
 		tile->option = 0;
 		tile->color = 15;
-		tile->value = i + 1;
+		tile->index = y * COUNT_X + x;
+		tile->value = tile->index + 1;
 		tile->check = true;
 
 		x++;
@@ -161,7 +155,7 @@ int main(void)
 
 	srand(unsigned int(GetTickCount64()));
 
-	for (int i = 0; i < COUNT_Y * COUNT_X; i++)
+	for (int i = 0; i < COUNT_Y * COUNT_X * 2; i++)
 	{
 		int random1 = rand() % 25;
 		int random2 = rand() % 25;
@@ -186,13 +180,9 @@ int main(void)
 		TileList[i]->tile[3] = string(buffer);
 	}
 
-	Vector3 position;
-	position.x = 3;
-	position.y = 2;
-
-
 	// ** Target
 	Info Cursur;
+
 	Cursur.position = Vector3(15.0f, 8.0f);
 	Cursur.option = 0;
 
@@ -218,8 +208,6 @@ int main(void)
 
 	while (true)
 	{
-		SetColor(7);
-
 		if (time + 50 < GetTickCount64())
 		{
 			time = GetTickCount64();
@@ -235,7 +223,7 @@ int main(void)
 				if(index < MAX &&
 					5 <= index &&
 					CheckTileList(index - COUNT_X))
-				index -= COUNT_X;
+					index -= COUNT_X;
 			}
 
 			if (GetAsyncKeyState(VK_DOWN))
@@ -274,42 +262,31 @@ int main(void)
 					Text(TileList[index]->position[0].x,
 						TileList[index]->position[0].y,
 						TileList[index]->tile[0],
-						2);
+						10);
 
 					Text(TileList[index]->position[1].x,
 						TileList[index]->position[1].y,
 						TileList[index]->tile[1],
-						2);
+						10);
 					
 					Text(TileList[index]->position[2].x,
 						TileList[index]->position[2].y,
 						TileList[index]->tile[2],
-						2);
+						10);
 
-					/*Text(TileList[index]->position[3].x,
+					Text(TileList[index]->position[3].x,
 						TileList[index]->position[3].y,
 						TileList[index]->tile[3],
-						15);*/
+						10);
 				}
 				else
 					TileList[i]->Render();
 
-				Text(TileList[i]->position[3].x,
+				/*Text(TileList[i]->position[3].x,
 					TileList[i]->position[3].y,
 					TileList[i]->tile[3],
-					15);
-				/*
-				else
-				{
-					if (TileList[i]->option == 1)
-						TileList[i]->Render(0);
-					else
-						TileList[i]->Render(15);
-				}
-				*/
+					15);*/
 			}
-
-
 			// ** CPU가 연산을 하지 않는 상태.
 			Sleep(50);
 		}
