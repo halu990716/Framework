@@ -97,7 +97,7 @@ typedef struct tagTile
 
 	}
 
-	tagTile() : option(0), value(0), color(0), check(false) {}
+	tagTile() : option(0), index(0), value(0), color(0), check(false) {}
 
 }Tile;
 

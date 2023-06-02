@@ -1,0 +1,35 @@
+MSG msg;
+
+    msg.message = NULL;
+
+    ULONGLONG Time = GetTickCount64();
+
+    while (msg.message != WM_QUIT)
+    {
+        if (PeekMessage(&msg,nullptr,0,0,PM_REMOVE))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+        else
+        {
+            if (Time < GetTickCount64())
+            {
+                Time = GetTickCount64();
+
+
+            }
+        }
+    }
+
+/*
+    // 기본 메시지 루프입니다:
+    while (GetMessage(&msg, nullptr, 0, 0)) // ** GetMessage : 이벤트가 있어야 트루가 됨
+    {
+        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+*/

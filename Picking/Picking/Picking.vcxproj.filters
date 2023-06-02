@@ -13,24 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\Header">
+      <UniqueIdentifier>{0cde3aa9-fa5b-4d4f-a5a6-200919a5622a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainUpdate">
+      <UniqueIdentifier>{7bc34ad8-3f4f-4c73-ba6b-ac09d4e0b7f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Stage">
+      <UniqueIdentifier>{8cfb13bd-5f2e-4410-9acd-eefc39498ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{e3d1c342-5928-49e0-969a-ad63cfe03b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Tile">
+      <UniqueIdentifier>{85c6c310-34e0-4be9-aa48-83903e458921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ObjectManager">
+      <UniqueIdentifier>{2be45af0-190a-4816-b35f-4bee89e4527e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Header</Filter>
     </ClInclude>
     <ClInclude Include="Picking.h">
+      <Filter>헤더 파일\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainUpdate.h">
+      <Filter>소스 파일\MainUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>소스 파일\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>소스 파일\Object\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>소스 파일\ObjectManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Picking.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainUpdate.cpp">
+      <Filter>소스 파일\MainUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>소스 파일\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>소스 파일\Object\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>소스 파일\ObjectManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
