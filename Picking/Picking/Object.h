@@ -8,9 +8,9 @@ protected:
 
 	string Key;
 public:
-	virtual void Start() PURE;
-	virtual void Update() PURE;
-	virtual void Render(HDC hdc) PURE;
+	virtual Object* Start() PURE;
+	virtual void Update(int _x, int _y) PURE;
+	virtual void Render(HDC hdc, int _x, int _y) PURE;
 	virtual void Destroy() PURE;
 public:
 	string GetKey()const { return Key; }
