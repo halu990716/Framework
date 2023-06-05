@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -139,23 +139,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\WIN32API_Framework\WIN32API_Framework\Bitmap.h" />
+    <ClInclude Include="..\..\WIN32API_Framework\WIN32API_Framework\ImagerManager.h" />
+    <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Picking.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\WIN32API_Framework\WIN32API_Framework\Bitmap.cpp" />
+    <ClCompile Include="..\..\WIN32API_Framework\WIN32API_Framework\ImagerManager.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Picking.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>

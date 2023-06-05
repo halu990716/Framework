@@ -15,6 +15,8 @@ void MainUpdate::Start()
 {
 	m_hdc = GetDC(g_hWnd);
 
+	srand((unsigned int)GetTickCount64());
+
 	stage = new Stage;
 	stage->Start();
 }
