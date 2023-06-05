@@ -11,6 +11,7 @@ public:
 
 protected:
 	int Option;
+	int Index;
 	Transform transform;
 public:
 	virtual void Start() PURE;
@@ -25,6 +26,9 @@ public:
 
 	int GetOption()const { return Option; }
 	void SetOption(const int& _Option) { Option = _Option; }
+
+	int GetIndex() const { return Index; }
+	void SetIndex(const int& _Index) { Index = _Index; }
 public:
 	Object();
 	virtual ~Object();

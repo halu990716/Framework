@@ -28,11 +28,17 @@
     <Filter Include="소스 파일\Object\Tile">
       <UniqueIdentifier>{85c6c310-34e0-4be9-aa48-83903e458921}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\ImagerManager">
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{35ac4d7d-1cf8-4631-baec-7c08f1a27228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\ImagerManager">
       <UniqueIdentifier>{bec1f6cb-d994-4451-a7e1-b5db9286088f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\ImagerManager\Bitmap">
+    <Filter Include="소스 파일\Manager\ImagerManager\Bitmap">
       <UniqueIdentifier>{30721c0c-a00f-4b69-b686-3cb348a592a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\SceneManager">
+      <UniqueIdentifier>{9a87489f-359f-4986-a73c-2a351ccac2b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,16 +73,16 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\..\WIN32API_Framework\WIN32API_Framework\ImagerManager.h">
-      <Filter>소스 파일\ImagerManager</Filter>
+      <Filter>소스 파일\Manager\ImagerManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\WIN32API_Framework\WIN32API_Framework\Bitmap.h">
-      <Filter>소스 파일\ImagerManager\Bitmap</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Manager\ImagerManager\Bitmap</Filter>
     </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\Manager\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -96,13 +102,13 @@
       <Filter>소스 파일\Object\Tile</Filter>
     </ClCompile>
     <ClCompile Include="..\..\WIN32API_Framework\WIN32API_Framework\ImagerManager.cpp">
-      <Filter>소스 파일\ImagerManager</Filter>
+      <Filter>소스 파일\Manager\ImagerManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\WIN32API_Framework\WIN32API_Framework\Bitmap.cpp">
-      <Filter>소스 파일\ImagerManager\Bitmap</Filter>
+      <Filter>소스 파일\Manager\ImagerManager\Bitmap</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Manager\SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
